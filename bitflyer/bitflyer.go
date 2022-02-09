@@ -22,6 +22,7 @@ type APIClient struct {
 }
 
 func (api APIClient) header(method, endpoint string, body []byte) map[string]string {
+	// 10進数のtimestamp
 	timestamp := strconv.FormatInt(time.Now().Unix(), 10)
 	log.Println(timestamp)
 	message := timestamp + method + endpoint + string(body)

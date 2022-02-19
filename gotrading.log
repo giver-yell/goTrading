@@ -1,1 +1,13 @@
 2022/02/05 13:48:52 main.go:12: test
+2022/02/09 09:39:00 bitflyer.go:57: action=doRequest endpoint=https://api.bitflyer.com/v1/me/getbalance
+2022/02/09 09:39:00 bitflyer.go:33: 1644367140
+2022/02/09 09:39:00 bitflyer.go:92: url=%!s(MISSING) resp=%!s(MISSING), url, string(resp)
+2022/02/09 09:39:00 bitflyer.go:100: action=GetBalance err=json: cannot unmarshal object into Go value of type []bitflyer.Balance
+2022/02/09 09:45:17 bitflyer.go:57: action=doRequest endpoint=https://api.bitflyer.com/v1/me/getbalance
+2022/02/09 09:45:17 bitflyer.go:33: 1644367517
+2022/02/09 09:45:18 bitflyer.go:92: url=me/getbalance resp={"status":-500,"error_message":"Key not found","data":null}
+2022/02/09 09:45:18 bitflyer.go:100: action=GetBalance err=json: cannot unmarshal object into Go value of type []bitflyer.Balance
+2022/02/19 11:10:24 bitflyer.go:57: action=doRequest endpoint=https://api.bitflyer.com/v1/me/getbalance
+2022/02/19 11:10:24 bitflyer.go:33: 1645236624
+2022/02/19 11:10:25 bitflyer.go:92: url=me/getbalance resp={"status":-500,"error_message":"Key not found","data":null}
+2022/02/19 11:10:25 bitflyer.go:100: action=GetBalance err=json: cannot unmarshal object into Go value of type []bitflyer.Balance

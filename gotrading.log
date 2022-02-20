@@ -11,3 +11,11 @@
 2022/02/19 11:10:24 bitflyer.go:33: 1645236624
 2022/02/19 11:10:25 bitflyer.go:92: url=me/getbalance resp={"status":-500,"error_message":"Key not found","data":null}
 2022/02/19 11:10:25 bitflyer.go:100: action=GetBalance err=json: cannot unmarshal object into Go value of type []bitflyer.Balance
+2022/02/19 13:20:40 bitflyer.go:57: action=doRequest endpoint=https://api.bitflyer.com/v1/ticker
+2022/02/19 13:20:40 bitflyer.go:33: 1645244440
+2022/02/19 13:20:41 bitflyer.go:131: action=DateTime, err=parsing time "2022-02-19T04:20:38.837" as "2006-01-02T15:04:05Z07:00": cannot parse "" as "Z07:00"
+2022/02/19 13:20:41 bitflyer.go:131: action=DateTime, err=parsing time "2022-02-19T04:20:38.837" as "2006-01-02T15:04:05Z07:00": cannot parse "" as "Z07:00"
+2022/02/20 16:05:00 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
+2022/02/20 16:07:21 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
+2022/02/20 16:07:37 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
+2022/02/20 16:13:03 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc

@@ -15,3 +15,7 @@
 2022/02/19 13:20:40 bitflyer.go:33: 1645244440
 2022/02/19 13:20:41 bitflyer.go:131: action=DateTime, err=parsing time "2022-02-19T04:20:38.837" as "2006-01-02T15:04:05Z07:00": cannot parse "" as "Z07:00"
 2022/02/19 13:20:41 bitflyer.go:131: action=DateTime, err=parsing time "2022-02-19T04:20:38.837" as "2006-01-02T15:04:05Z07:00": cannot parse "" as "Z07:00"
+2022/02/20 16:05:00 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
+2022/02/20 16:07:21 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
+2022/02/20 16:07:37 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
+2022/02/20 16:13:03 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc

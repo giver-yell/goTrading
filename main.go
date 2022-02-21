@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/giver-yell/goTrading/bitflyer"
 	"github.com/giver-yell/goTrading/config"
@@ -20,14 +19,27 @@ func main() {
 	// fmt.Println(ticker.DateTime())
 	// fmt.Println(ticker.TruncateDateTime(time.Hour))
 
-	tickerChannel := make(chan bitflyer.Ticker)
-	go apiClient.GetRealTimeTicker(config.Config.ProductCode, tickerChannel)
-	for ticker := range tickerChannel {
-		fmt.Println(ticker)
-		fmt.Println(ticker.GetMidPrice())
-		fmt.Println(ticker.DateTime())
-		fmt.Println(ticker.TruncateDateTime(time.Second))
-		fmt.Println(ticker.TruncateDateTime(time.Minute))
-		fmt.Println(ticker.TruncateDateTime(time.Hour))
+	// tickerChannel := make(chan bitflyer.Ticker)
+	// go apiClient.GetRealTimeTicker(config.Config.ProductCode, tickerChannel)
+	// for ticker := range tickerChannel {
+	// 	fmt.Println(ticker)
+	// 	fmt.Println(ticker.GetMidPrice())
+	// 	fmt.Println(ticker.DateTime())
+	// 	fmt.Println(ticker.TruncateDateTime(time.Second))
+	// 	fmt.Println(ticker.TruncateDateTime(time.Minute))
+	// 	fmt.Println(ticker.TruncateDateTime(time.Hour))
+	// }
+
+	order := &bitflyer.Order{
+		ProductCode: config.Config.ProductCode,
+		// 成り行き
+		ChildOrderType:  "MARKET",
+		Side:            "BUY",
+		Size:            0.01,
+		MinuteToExpires: 1,
+		TimeInForce:     "GTC",
 	}
+	res, _ := apiClient.SendOrder(order)
+	fmt.Println(res.ChildOrderAcceptanceID)
+
 }

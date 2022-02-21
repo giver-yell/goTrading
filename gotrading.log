@@ -19,3 +19,5 @@
 2022/02/20 16:07:21 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
 2022/02/20 16:07:37 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
 2022/02/20 16:13:03 bitflyer.go:173: connecting to wss://ws.lightstream.bitflyer.com/json-rpc
+2022/02/21 09:17:31 bitflyer.go:60: action=doRequest endpoint=https://api.bitflyer.com/v1/me/sendchildorder
+2022/02/21 09:17:31 bitflyer.go:36: 1645402651

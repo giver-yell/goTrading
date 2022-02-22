@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 
-	"github.com/giver-yell/goTrading/bitflyer"
+	"github.com/giver-yell/goTrading/app/models"
 	"github.com/giver-yell/goTrading/config"
 	"github.com/giver-yell/goTrading/utils"
 )
 
 func main() {
 	utils.LoggingSettings(config.Config.LogFile)
-	apiClient := bitflyer.New(config.Config.ApiKey, config.Config.ApiSecret)
+	// apiClient := bitflyer.New(config.Config.ApiKey, config.Config.ApiSecret)
 	// fmt.Println(apiClient.GetBalance())
 
 	// ticker, _ := apiClient.GetTicker("BTC_USD")
@@ -30,16 +30,18 @@ func main() {
 	// 	fmt.Println(ticker.TruncateDateTime(time.Hour))
 	// }
 
-	order := &bitflyer.Order{
-		ProductCode: config.Config.ProductCode,
-		// 成り行き
-		ChildOrderType:  "MARKET",
-		Side:            "BUY",
-		Size:            0.01,
-		MinuteToExpires: 1,
-		TimeInForce:     "GTC",
-	}
-	res, _ := apiClient.SendOrder(order)
-	fmt.Println(res.ChildOrderAcceptanceID)
+	// order := &bitflyer.Order{
+	// 	ProductCode: config.Config.ProductCode,
+	// 	// 成り行き
+	// 	ChildOrderType:  "MARKET",
+	// 	Side:            "BUY",
+	// 	Size:            0.01,
+	// 	MinuteToExpires: 1,
+	// 	TimeInForce:     "GTC",
+	// }
+	// res, _ := apiClient.SendOrder(order)
+	// fmt.Println(res.ChildOrderAcceptanceID)
+
+	fmt.Println(models.DbConnection)
 
 }

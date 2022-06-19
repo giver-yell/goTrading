@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/giver-yell/goTrading/config"
+	"github.com/giver-yell/goTrading/utils"
 )
 
 func main() {
@@ -42,7 +43,11 @@ func main() {
 
 	// fmt.Println(models.DbConnection)
 
+	// 95.アプリのロギングの設定
+	utils.LoggingSettings(config.Config.LogFile)
+	log.Println("test")
+
 	// 94.アプリのconfigの設定
-	fmt.Println(config.Config.ApiKey)
-	fmt.Println(config.Config.ApiSecret)
+	// fmt.Println(config.Config.ApiKey)
+	// fmt.Println(config.Config.ApiSecret)
 }

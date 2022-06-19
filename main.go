@@ -3,13 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/giver-yell/goTrading/app/models"
 	"github.com/giver-yell/goTrading/config"
-	"github.com/giver-yell/goTrading/utils"
 )
 
 func main() {
-	utils.LoggingSettings(config.Config.LogFile)
+	// utils.LoggingSettings(config.Config.LogFile)
 	// apiClient := bitflyer.New(config.Config.ApiKey, config.Config.ApiSecret)
 	// fmt.Println(apiClient.GetBalance())
 
@@ -42,6 +40,9 @@ func main() {
 	// res, _ := apiClient.SendOrder(order)
 	// fmt.Println(res.ChildOrderAcceptanceID)
 
-	fmt.Println(models.DbConnection)
+	// fmt.Println(models.DbConnection)
 
+	// 94.アプリのconfigの設定
+	fmt.Println(config.Config.ApiKey)
+	fmt.Println(config.Config.ApiSecret)
 }

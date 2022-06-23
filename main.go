@@ -34,6 +34,7 @@ func main() {
 	// 	fmt.Println(ticker.TruncateDateTime(time.Hour))
 	// }
 
+	// 101.Bitcoinを売買するAPI
 	// order := &bitflyer.Order{
 	// 	ProductCode: config.Config.ProductCode,
 	// 	// 成り行き

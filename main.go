@@ -2,22 +2,26 @@ package main
 
 import (
 	"fmt"
+	"time"
 
-	"github.com/giver-yell/goTrading/app/models"
+	"github.com/giver-yell/goTrading/bitflyer"
 	"github.com/giver-yell/goTrading/config"
 	"github.com/giver-yell/goTrading/utils"
 )
 
 func main() {
+	// 95.アプリのロギングの設定
 	utils.LoggingSettings(config.Config.LogFile)
-	// apiClient := bitflyer.New(config.Config.ApiKey, config.Config.ApiSecret)
+	// log.Println("test")
+	apiClient := bitflyer.New(config.Config.ApiKey, config.Config.ApiSecret)
 	// fmt.Println(apiClient.GetBalance())
 
-	// ticker, _ := apiClient.GetTicker("BTC_USD")
-	// fmt.Println(ticker)
-	// fmt.Println(ticker.GetMidPrice())
-	// fmt.Println(ticker.DateTime())
-	// fmt.Println(ticker.TruncateDateTime(time.Hour))
+	// 98.Ticker APIでBitcoinデータを取得
+	ticker, _ := apiClient.GetTicker("BTC_USD")
+	fmt.Println(ticker)
+	fmt.Println(ticker.GetMidPrice())
+	fmt.Println(ticker.DateTime())
+	fmt.Println(ticker.TruncateDateTime(time.Hour))
 
 	// tickerChannel := make(chan bitflyer.Ticker)
 	// go apiClient.GetRealTimeTicker(config.Config.ProductCode, tickerChannel)
@@ -30,6 +34,7 @@ func main() {
 	// 	fmt.Println(ticker.TruncateDateTime(time.Hour))
 	// }
 
+	// 101.Bitcoinを売買するAPI
 	// order := &bitflyer.Order{
 	// 	ProductCode: config.Config.ProductCode,
 	// 	// 成り行き
@@ -42,6 +47,9 @@ func main() {
 	// res, _ := apiClient.SendOrder(order)
 	// fmt.Println(res.ChildOrderAcceptanceID)
 
-	fmt.Println(models.DbConnection)
+	// fmt.Println(models.DbConnection)
 
+	// 94.アプリのconfigの設定
+	// fmt.Println(config.Config.ApiKey)
+	// fmt.Println(config.Config.ApiSecret)
 }

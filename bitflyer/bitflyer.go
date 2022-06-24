@@ -33,7 +33,6 @@ func New(key, secret string) *APIClient {
 func (api APIClient) header(method, endpoint string, body []byte) map[string]string {
 	// 10進数のtimestamp
 	timestamp := strconv.FormatInt(time.Now().Unix(), 10)
-	log.Println(timestamp)
 	message := timestamp + method + endpoint + string(body)
 
 	mac := hmac.New(sha256.New, []byte(api.secret))
@@ -107,8 +106,8 @@ func (api *APIClient) GetBalance() ([]Balance, error) {
 }
 
 type Ticker struct {
-	ProductCode     string  `json:"product_code"`
-	State           string  `json:"state"`
+	ProductCode string `json:"product_code"`
+
 	Timestamp       string  `json:"timestamp"`
 	TickID          int     `json:"tick_id"`
 	BestBid         float64 `json:"best_bid"`
@@ -117,8 +116,6 @@ type Ticker struct {
 	BestAskSize     float64 `json:"best_ask_size"`
 	TotalBidDepth   float64 `json:"total_bid_depth"`
 	TotalAskDepth   float64 `json:"total_ask_depth"`
-	MarketBidSize   float64 `json:"market_bid_size"`
-	MarketAskSize   float64 `json:"market_ask_size"`
 	Ltp             float64 `json:"ltp"`
 	Volume          float64 `json:"volume"`
 	VolumeByProduct float64 `json:"volume_by_product"`
@@ -154,6 +151,53 @@ func (api *APIClient) GetTicker(productCode string) (*Ticker, error) {
 	}
 	return &ticker, nil
 }
+
+// Pubnub service is scheduled to stop on 1st Dec, 2018
+/*
+func (api *APIClient) GetRealTimeTicker(symbol string, ch chan<- Ticker) {
+	pubnub := messaging.NewPubnub(
+		"", "sub-c-52a9ab50-291b-11e5-baaa-0619f8945a4f",
+		"", "", false, "", nil)
+
+	channel := fmt.Sprintf("lightning_ticker_%s", symbol)
+	sucCha := make(chan []byte)
+	errCha := make(chan []byte)
+
+	// [[{"best_ask":6206.99,"best_ask_size":1.24,"best_bid":6164,"best_bid_size":0.3,"ltp":6184.1,"product_code":"BTC_USD","tick_id":33839,"timestamp":"2018-10-12T03:01:53.8597609Z","total_ask_depth":228.3295673,"total_bid_depth":15.3916763,"volume":37.29123857,"volume_by_product":37.29123857}], "15393133139745912", "lightning_ticker_BTC_USD"]
+	go pubnub.Subscribe(channel, "", sucCha, false, errCha)
+
+	OUTER:
+		for {
+			select {
+			case res := <-sucCha:
+				var tickerList []interface{}
+				if err := json.Unmarshal(res, &tickerList); err != nil {
+					continue OUTER
+				}
+				var ticker Ticker
+				switch tic := tickerList[0].(type){
+				case []interface{}:
+					if len(tic)	 == 0 {
+						continue OUTER
+					}
+					marshaTic, err := json.Marshal(tic[0])
+					if err != nil {
+						continue OUTER
+					}
+					if err := json.Unmarshal(marshaTic, &ticker); err != nil {
+						continue OUTER
+					}
+					ch <- ticker
+				}
+
+			case err := <-errCha:
+				log.Printf("action=GetRealTimeTicker err=%s", err)
+			case <-messaging.SubscribeTimeout():
+				log.Printf("action=GetRealTimeTicker err=timeout")
+			}
+		}
+}
+*/
 
 // JSON-RPC 2.0 over WebSocketでTickerをリアルタイムで取得する
 type JsonRPC2 struct {

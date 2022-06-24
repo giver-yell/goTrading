@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"time"
 
-	"github.com/giver-yell/goTrading/bitflyer"
+	"github.com/giver-yell/goTrading/app/controllers"
+	"github.com/giver-yell/goTrading/app/models"
 	"github.com/giver-yell/goTrading/config"
 	"github.com/giver-yell/goTrading/utils"
 )
@@ -13,15 +13,19 @@ func main() {
 	// 95.アプリのロギングの設定
 	utils.LoggingSettings(config.Config.LogFile)
 	// log.Println("test")
-	apiClient := bitflyer.New(config.Config.ApiKey, config.Config.ApiSecret)
+	// apiClient := bitflyer.New(config.Config.ApiKey, config.Config.ApiSecret)
 	// fmt.Println(apiClient.GetBalance())
 
 	// 98.Ticker APIでBitcoinデータを取得
-	ticker, _ := apiClient.GetTicker("BTC_USD")
-	fmt.Println(ticker)
-	fmt.Println(ticker.GetMidPrice())
-	fmt.Println(ticker.DateTime())
-	fmt.Println(ticker.TruncateDateTime(time.Hour))
+	// ticker, _ := apiClient.GetTicker("BTC_USD")
+	// fmt.Println(ticker)
+	// fmt.Println(ticker.GetMidPrice())
+	// fmt.Println(ticker.DateTime())
+	// fmt.Println(ticker.TruncateDateTime(time.Hour))
+
+	// 103.リアルタイムで取得したキャンドルスティックの情報をDB書き込み
+	fmt.Println(models.DbConnection)
+	controllers.StreamIngestionData()
 
 	// tickerChannel := make(chan bitflyer.Ticker)
 	// go apiClient.GetRealTimeTicker(config.Config.ProductCode, tickerChannel)

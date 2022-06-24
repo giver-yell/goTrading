@@ -223,7 +223,7 @@ func (api *APIClient) GetRealTimeTicker(symbol string, ch chan<- Ticker) {
 	defer c.Close()
 
 	channel := fmt.Sprintf("lightning_ticker_%s", symbol)
-	if err := c.WriteJSON(&JsonRPC2{Version: "2.0", Method: "Subscribe", Params: &SubscribeParams{channel}}); err != nil {
+	if err := c.WriteJSON(&JsonRPC2{Version: "2.0", Method: "subscribe", Params: &SubscribeParams{channel}}); err != nil {
 		log.Fatal("subscribe:", err)
 		return
 	}
